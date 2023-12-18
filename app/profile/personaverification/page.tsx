@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect } from 'react';
-import { createBrowserHistory } from 'history';// Import useHistory from React Router
 import Persona from 'persona';
 import { callApi } from '../../_actions/personaupdateapi';
 import { useRouter } from 'next/navigation';
@@ -12,7 +11,7 @@ const InlineInquiry = () => {
 
     useEffect(() => {
       
-        myuserId = localStorage.getItem('userId');
+        // myuserId = localStorage.getItem('userId');
        
   
     }, []);
@@ -24,8 +23,8 @@ const InlineInquiry = () => {
     const handleComplete = async ({ inquiryId, status, fields }) => {
         try {
             if (status === 'completed') {
-                await callApi(inquiryId, myuserId);
-                router.push('/profile'); 
+                // await callApi(inquiryId, myuserId);
+                // router.push('/profile'); 
               
             }
         } catch (e) {
