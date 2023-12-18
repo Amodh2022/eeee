@@ -10,20 +10,15 @@ const InlineInquiry: React.FC = () => {
     const router = useRouter();
     const [myuserId, setMyuserId] = useState<string | null>(null);
 
-    useEffect(() => {
-        const userIdFromStorage = localStorage.getItem('userId');
-        if (userIdFromStorage) {
-            setMyuserId(userIdFromStorage);
-        }
-    }, []);
+    
 
  
 
     const handleComplete = async ({ inquiryId, status, fields }: any) => {
         try {
             if (status === 'completed') {
-                await callApi(inquiryId, myuserId);
-                router.push('/profile'); 
+                // await callApi(inquiryId, myuserId);
+                // router.push('/profile'); 
             }
         } catch (e) {
             console.error("Error in handleComplete:", e);
