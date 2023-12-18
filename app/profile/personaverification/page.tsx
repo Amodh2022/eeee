@@ -1,4 +1,4 @@
-// Import necessary modules
+'use client'
 import React, { useEffect } from 'react';
 import Persona from 'persona';
 import { callApi } from '../../_actions/personaupdateapi';
@@ -13,22 +13,20 @@ const InlineInquiry: React.FC = () => {
     // useEffect to get userId from localStorage
     useEffect(() => {
         myuserId = localStorage.getItem('userId');
-        // Check if myuserId is not null before using it
+       
         if (myuserId) {
-            // Your logic here, if needed
+           
         }
     }, []);
 
-    // Define the inline styles
     const divStyle: React.CSSProperties = {
         width: '100%', 
     };
 
-    // Define the handleComplete function
+   
     const handleComplete = async ({ inquiryId, status, fields }: any) => {
         try {
             if (status === 'completed') {
-                // Uncomment the following lines when needed
                 await callApi(inquiryId, myuserId);
                 router.push('/profile'); 
             }
