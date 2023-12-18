@@ -1,31 +1,36 @@
-'use client';
+// Import necessary modules
 import React, { useEffect } from 'react';
 import Persona from 'persona';
 import { callApi } from '../../_actions/personaupdateapi';
 import { useRouter } from 'next/navigation';
 
-
-const InlineInquiry = () => {
+// Define the InlineInquiry component
+const InlineInquiry: React.FC = () => {
+    // Initialize router and userId variables
     const router = useRouter();
-    var myuserId;
+    let myuserId: string | null = null;
 
+    // useEffect to get userId from localStorage
     useEffect(() => {
-      
-        // myuserId = localStorage.getItem('userId');
-       
-  
+        myuserId = localStorage.getItem('userId');
+        // Check if myuserId is not null before using it
+        if (myuserId) {
+            // Your logic here, if needed
+        }
     }, []);
 
-    const divStyle = {
+    // Define the inline styles
+    const divStyle: React.CSSProperties = {
         width: '100%', 
     };
 
-    const handleComplete = async ({ inquiryId, status, fields }) => {
+    // Define the handleComplete function
+    const handleComplete = async ({ inquiryId, status, fields }: any) => {
         try {
             if (status === 'completed') {
-                // await callApi(inquiryId, myuserId);
-                // router.push('/profile'); 
-              
+                // Uncomment the following lines when needed
+                await callApi(inquiryId, myuserId);
+                router.push('/profile'); 
             }
         } catch (e) {
             console.error("Error in handleComplete:", e);
@@ -33,6 +38,7 @@ const InlineInquiry = () => {
         }
     };
 
+    // Return the JSX for the component
     return (
         <div className='h-screen flex justify-center' style={divStyle}>
             <Persona.Inquiry
@@ -47,4 +53,5 @@ const InlineInquiry = () => {
     );
 };
 
+// Export the component
 export default InlineInquiry;
