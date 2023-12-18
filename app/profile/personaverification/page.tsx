@@ -17,9 +17,7 @@ const InlineInquiry: React.FC = () => {
         }
     }, []);
 
-    const divStyle: React.CSSProperties = {
-        width: '100%', 
-    };
+ 
 
     const handleComplete = async ({ inquiryId, status, fields }: any) => {
         try {
@@ -33,9 +31,9 @@ const InlineInquiry: React.FC = () => {
         }
     };
 
-    // Return the JSX for the component
+  
     return (
-        <div className='h-screen flex justify-center' style={divStyle}>
+        <div className='h-screen flex justify-center'>
             <Persona.Inquiry
                 templateId='itmpl_oFwr5vDFxPnJVnpKmXpgxY5x'
                 environmentId='env_3gPXHtfowwicvW8eh5GdW9PV'
