@@ -1,21 +1,19 @@
-'use client'
-import React, { useEffect } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Persona from 'persona';
 import { callApi } from '../../_actions/personaupdateapi';
 import { useRouter } from 'next/navigation';
 
 // Define the InlineInquiry component
 const InlineInquiry: React.FC = () => {
-    // Initialize router and userId variables
+ 
     const router = useRouter();
-    let myuserId: string | null = null;
+    const [myuserId, setMyuserId] = useState<string | null>(null);
 
-    // useEffect to get userId from localStorage
     useEffect(() => {
-        myuserId = localStorage.getItem('userId');
-       
-        if (myuserId) {
-           
+        const userIdFromStorage = localStorage.getItem('userId');
+        if (userIdFromStorage) {
+            setMyuserId(userIdFromStorage);
         }
     }, []);
 
@@ -23,7 +21,6 @@ const InlineInquiry: React.FC = () => {
         width: '100%', 
     };
 
-   
     const handleComplete = async ({ inquiryId, status, fields }: any) => {
         try {
             if (status === 'completed') {
